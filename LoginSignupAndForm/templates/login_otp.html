@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OTP Verification</title>
+    <style>
+      /* CSS styles for the verification page */
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f8fa;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #fff;
+        border: 1px solid #e1e8ed;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .submit-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        background-color: #1da1f2;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .submit-btn:hover {
+        background-color: #0c8bd6;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+
+      .success-message {
+        color: green;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="error-message">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+      </br>
+      <h1>OTP Verification</h1>
+
+      <p>Check your email for login verification</p>
+
+      <form action="/login_otp" method="POST">
+        <div class="form-group">
+          <!-- <label for="otp">OTP has been sent to your email</label> -->
+          <label for="otp">Enter OTP</label>
+          <input type="text" id="otp" name="otp" required />
+        </div>
+        <div class="form-group">
+          <input type="submit" class="submit-btn" value="Verify" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
